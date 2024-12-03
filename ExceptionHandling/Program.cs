@@ -14,7 +14,7 @@ while (true)
             break;
         case "create":
             fileManager.CreateFile();
-            Console.WriteLine($"File {fileManager.Path} created");
+            Console.WriteLine($"File {fileManager.FilePath} created");
             break;
         case "write":
             Console.Write("Content: ");

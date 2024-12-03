@@ -2,35 +2,35 @@
 
 public class FileManager
 {
-    public string Path { get; }
+    public string FilePath { get; }
 
-    public FileManager(string path)
+    public FileManager(string filePath)
     {
-        Path = path;
+        FilePath = filePath;
     }
     
     public string ReadFileContent()
     {
-        return File.ReadAllText(Path);
+        return File.ReadAllText(FilePath);
     }
 
     public void WriteFileContent(string content)
     {
-        File.WriteAllText(Path, content);
+        File.WriteAllText(FilePath, content);
     }
 
     public void CreateFile()
     {
-        File.Create(Path).Close();
+        File.Create(FilePath).Close();
     }
 
     public void DeleteFile()
     {
-        File.Delete(Path);
+        File.Delete(FilePath);
     }
 
     public void MoveFile(string newPath)
     {
-        File.Move(Path, newPath);
+        File.Move(FilePath, newPath);
     }
 }
