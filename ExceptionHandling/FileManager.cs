@@ -6,12 +6,31 @@ public class FileManager
 
     public FileManager(string filePath)
     {
+        var directoryExists = Directory.Exists(Path.GetDirectoryName(filePath));
+        if (!directoryExists)
+        {
+            throw new DirectoryNotFoundException("Directory not found. Please specify an existing directory");
+        }
         FilePath = filePath;
     }
-    
+
     public string ReadFileContent()
     {
-        return File.ReadAllText(FilePath);
+        if (!File.Exists(FilePath))
+        {
+            Console.WriteLine("Fila finnes ikke. Hva med å kjøre 'create' først?");
+            return string.Empty;
+        }
+
+        try
+        {
+            return File.ReadAllText(FilePath);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Feil ved å lese fil: " + e.Message);
+            return string.Empty;
+        }
     }
 
     public void WriteFileContent(string content)
